@@ -67,7 +67,7 @@ fi
 
 #comprueba actualiczacion del script
 
-repositorio="https://github.com/sukigsx/Intrusos.git" #variable de la direccion del repositorio del script
+repositorio="https://github.com/sukigsx/Intrusos" #variable de la direccion del repositorio del script
 if wget -S --spider $repositorio &>/dev/null; #comprueba que exista el repositorio
 then
         if [ -e /usr/bin/$0 ] #comprueba si se ha instalado el script con el deb, comprobando el fichero /usr/bin/nombre_del_script.sh
