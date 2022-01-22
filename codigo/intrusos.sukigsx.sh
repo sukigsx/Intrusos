@@ -92,7 +92,7 @@ else
         echo -e " ${amarillo}Imposible la comprobacion de actualizaciones del script.${borra_colores}"
         echo ""
 fi
-
+sleep 2
 
 #maximiza la terminal.
 wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
