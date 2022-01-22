@@ -9,6 +9,19 @@ rosa="\e[0;35m\033[1m"
 turquesa="\e[0;36m\033[1m"
 borra_colores="\033[0m\e[0m" #borra colores
 
+
+#toma el control al pulsar control + c
+trap ctrl_c INT
+function ctrl_c()
+{
+clear
+figlet -c Gracias por 
+figlet -c utilizar mi
+figlet -c script
+wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
+exit
+}
+
 ##verificacion de conexion y tambien de fostware necesario
 clear
 echo -e ""
@@ -107,7 +120,7 @@ echo ""
 echo -e "${verde} Diseñado por sukigsx / Contacto:   sukigsx.mbsistemas@gmail.com${borra_colores}"
 echo -e "${verde}                                    https://mbsistemas.ddns.net${borra_colores}"
 echo ""
-echo -e "${verde} Nombre del script < $0 > Comprueba tu red lan/wifi de Intrusosssssssssssssssssssssssss.  ${borra_colores}"
+echo -e "${verde} Nombre del script < $0 > Comprueba tu red lan/wifi de Intrusos.  ${borra_colores}"
 echo ""
 echo -e "     0. ${azul}Actualiza este scripts.${borra_colores}"
 echo -e ""
