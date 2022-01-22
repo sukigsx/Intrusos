@@ -20,11 +20,11 @@ echo -e ""
         echo -e " [${verde}ok${borra_colores}] Conexion a internet."
         conexion="si" #sabemos si tenemos conexion a internet o no
     else
-        echo -e " [${rojo}XX${borra_colores}] Conexion a internet."
+        echo -e " [${rojo}X${borra_colores}] Conexion a internet."
         conexion="no" #sabemos si tenemos conexion a internet o no
     fi
     
-for paquete in wget git wmctrl figlet nmap fping nano diff #ponemos el fostware a instalar separado por espacios
+for paquete in wget git wmctrl figlet diff #paquetes a instalar separado por espacios, principales (wget git wmctrl figlet diff)
 do
     which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa llamado programa
     sino=$? #recojemos el 0 o 1 del resultado de which
@@ -42,7 +42,7 @@ do
             echo ""
             exit
         else #intenta instalar
-            echo -e " Instalando ${amarillo}$paquete${borra_colores}. Intento $contador/3."
+            echo " Instalando $paquete. Intento $contador/3."
             sudo apt install $paquete -y 2>/dev/null 1>/dev/null 0>/dev/null
             let "contador=contador+1" #incrementa la variable contador en 1
             which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa en tu sistema
@@ -52,21 +52,11 @@ done
     echo -e " [${verde}ok${borra_colores}] $paquete."
 
 done
-if [ $conexion = "no" ]
-then
-    echo -e ""
-    echo -e "${rojo} Este script no se puede ejecutar correctamente."
-    echo -e " Si NO dispone de conexion a internet.${borra_colores}"
-    echo -e ""
-    exit
-else
-    echo -e ""
-    echo -e "${verde} Continuamos...${borra_colores}"
-    sleep 2
-fi
+echo -e ""
+echo -e "${verde} Continuamos...${borra_colores}"
+sleep 2
 
 #comprueba actualiczacion del script
-
 repositorio="https://github.com/sukigsx/Intrusos" #variable de la direccion del repositorio del script
 if wget -S --spider $repositorio &>/dev/null; #comprueba que exista el repositorio
 then
