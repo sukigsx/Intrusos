@@ -24,7 +24,7 @@ echo -e ""
         conexion="no" #sabemos si tenemos conexion a internet o no
     fi
     
-for paquete in wget git wmctrl figlet diff #paquetes a instalar separado por espacios, principales (wget git wmctrl figlet diff)
+for paquete in wget git wmctrl figlet diff fping nano nmap #paquetes a instalar separado por espacios, principales (wget git wmctrl figlet diff)
 do
     which $paquete 2>/dev/null 1>/dev/null 0>/dev/null #comprueba si esta el programa llamado programa
     sino=$? #recojemos el 0 o 1 del resultado de which
