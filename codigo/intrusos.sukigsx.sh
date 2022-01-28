@@ -391,7 +391,7 @@ case $opcion in
         echo -e ""
         echo -e "${verde}Si estas utilizando para enviar correos una cuenta SIN doble factor PERFECTO.${borra_colores}"
         echo -e ""
-        echo -e "${amarillo}Si estas utilizando una cuenta de correo con el ${rojo}doble factor activado NO funcionara.${borra_colores}"
+        echo -e "${amarillo}Si estas utilizando una cuenta de correo con el ${rojo}doble factor activado, sigue los siguientes pasos:${borra_colores}"
         echo -e ""
         echo -e "${amarillo}Tendras que crear una clave de aplicacion en dicha cuenta de correo."
         echo -e "es muy sencillo, te muestro los pasos:${borra_colores}"
