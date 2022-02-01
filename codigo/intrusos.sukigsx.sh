@@ -539,7 +539,7 @@ case $opcion in
             rm /home/$(whoami)/.intrusos_automatico.sh 0>/dev/null 1>/dev/null 2>/dev/null
             echo "cd /home/$(whoami)/" >> /home/$(whoami)/.intrusos_automatico.sh
             
-            sed -n 292,309p intrusos.sh >> /home/$(whoami)/.intrusos_automatico.sh
+            sed -n 328,345p intrusos.sh >> /home/$(whoami)/.intrusos_automatico.sh
             echo "echo -e 'Subject:Se Ha Detectado Intruso o Intrusos En Tu Red.\n\nTu script de control de intrusos a detectado una o varias ip no registradas en tu red.\nEjecuta el script instrusos.sh y escanea para saber las ips detectadas.\n\nContacto: sukigsx@reparaciondesistemas.com\nWeb: www.reparaciondesistemas.com\nGithub: www.github.com/sukigsx\n\nMUCHAS GRACIAS POR UTILIZAR MI SCRIPT.' | msmtp $emaildestino" >> /home/$(whoami)/.intrusos_automatico.sh
             echo "else" >> /home/$(whoami)/.intrusos_automatico.sh
             echo "  echo" >> /home/$(whoami)/.intrusos_automatico.sh
