@@ -537,17 +537,9 @@ case $opcion in
             
             #Crea el fichero para incluir en el servidor 
             rm /home/$(whoami)/.intrusos_automatico.sh 0>/dev/null 1>/dev/null 2>/dev/null
-            echo "cd /home/$(whoami)/" >> /home/$(whoami)/.intrusos_automatico.sh
             
-            sed -n 328,345p intrusos.sukigsx.sh >> /home/$(whoami)/.intrusos_automatico.sh
-            echo "echo -e 'Subject:Se Ha Detectado Intruso o Intrusos En Tu Red.\n\nTu script de control de intrusos a detectado una o varias ip no registradas en tu red.\nEjecuta el script instrusos.sh y escanea para saber las ips detectadas.\n\nContacto: sukigsx@reparaciondesistemas.com\nWeb: www.reparaciondesistemas.com\nGithub: www.github.com/sukigsx\n\nMUCHAS GRACIAS POR UTILIZAR MI SCRIPT.' | msmtp $emaildestino" >> /home/$(whoami)/.intrusos_automatico.sh
-            echo "else" >> /home/$(whoami)/.intrusos_automatico.sh
-            echo "  echo" >> /home/$(whoami)/.intrusos_automatico.sh
-            echo "fi" >> /home/$(whoami)/.intrusos_automatico.sh
-            echo "rm /tmp/ipsactivas 0>/dev/null 1>/dev/null 2>/dev/null" >> /home/$(whoami)/.intrusos_automatico.sh
+            sed -n 722,737p intrusos.sukigsx.sh >> /home/$(whoami)/.intrusos_automatico.sh
             
-           
-           
            echo -e "${amarillo}Configurando la tarea cron automatica.${borra_colores}"
             echo ""
             ####################
@@ -723,3 +715,25 @@ case $opcion in
         read pause;;
 esac
 done
+
+#codifo dentro de la funcion para el fichero de .intrusos_automatico.sh
+function nousar()
+{
+cd /home/sukigsx/
+rango_red=$(hostname -I | awk '{ print $1 }')
+
+#captura las ips que estas activas en el mopmento del escaneo y crea el fichero ipsactivas para compararlo con el ipslegales
+rm /tmp/ipsactivas 2>/dev/null
+fping -g $rango_red/24 2> /dev/null | grep alive | awk '{ print $1 }' | sort > /tmp/ipsactivas
+mv /home/$(whoami)/.ipspermitidas ips; cat ips | sort > /home/$(whoami)/.ipspermitidas; rm ips
+#realiza la comprobacion de los ficheros de ipslegales con ipsactivas
+intrusos_detectados=$(diff /home/$(whoami)/.ipspermitidas /tmp/ipsactivas | grep ">")
+if [ $? = 0 ]
+then
+    echo -e "Subject:Se han detectado intrusos en tu red.\n\nTu script de control de intrusos a detectados las siguientes ip's.\n\n$intrusos_detectados\n\n\nContacto: sukigsx.mbsistemas@gmail.com\nWeb: mbsistemas.ddns.net\nGithub: www.github.com/sukigsx\n\nMUCHAS GRACIAS POR UTILIZAR MI SCRIPT." | msmtp sukigsx@gmail.com
+else
+    echo
+fi
+rm /tmp/ipsactivas 0>/dev/null 1>/dev/null 2>/dev/null
+}
+
