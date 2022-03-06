@@ -1,14 +1,14 @@
 -- Instalacion de paquetes --
- 
- 
-Lo mas interesante es la automatizacion de lo que quieres instalar.
-Seleccionas los paquetes a instalar y cuando termines, te los instalara todos a la vez.
-Sin necesidad de ir introduciendo comandos.
-¿Que puedes hacer con este script?
-- Actualizar tu sistema.
-- Añadir repositorios.
-- Instalar paquetes *.deb.
-- Instalar software de forma automatizada.
+
+Detecta intrusos en tu red lan/wifi
+
+
+Este script lo que hace, es lo siguiente.
+
+Escanea la red lan/wifi de tu entorno, comprobando las direcciones ip de cada dispositivo de tu red y las compara con la lista de ips permitidas que tienes asignadas a tu red, si encuentra diferencias te informa de ello para que sepas que una direccion se ha introducido en tu red sin tu consentimiento.
+
+Puedes configurarlo para que te mande un correo electronico para avisarte.
+
 
 software en /usr/bin
-iconos en /usr/share/icons/Instalacion-software
+iconos en /usr/share/icons/Intrusos

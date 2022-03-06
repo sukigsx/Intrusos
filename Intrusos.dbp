@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Intrusos
+Version=1.0
+Exec=bash /usr/bin/intrusos.sukigsx.sh
+Comment=-- Detecta intrusos en tu red lan/wifi --
+Icon=/usr/share/icons/Intrusos/intruso.png
+Type=Application
+Terminal=true
+StartupNotify=true
+Encoding=UTF-8
+Categories=Utility;System;
